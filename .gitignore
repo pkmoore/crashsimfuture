@@ -1,0 +1,9 @@
+*.pdf
+paper.aux
+paper.bbl
+paper.blg
+paper.dvi
+paper.log
+paper.ps
+paper.out
+.snips/*
