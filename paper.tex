@@ -13,12 +13,57 @@ increasing its usage.
 support new version of python
 
 \subsection{Supporting new platforms}
-Cross-platform anomaly descriptions
-  How does anomaly A look on platform A vs platform B
-windows mac etc
+
+While CrashSimulator has been shown to be successful at finding
+environmental bugs when limited to only operating on Linux applications
+there is a great deal of opportunity to find more interesting, impactful
+bugs by examining the environmental differences resulting from applications
+running on completely different operating systems.  As a result, improving
+CrashSimulator to run on Windows and OS X is a major future goal of this
+work.
+
+Key to realizing this support is dealing with the fact that each operating
+system provides different system calls.  For example, Linux uses {\tt
+open()} to open files while Windows provides {\tt NtOpenFile()}.  In their
+current form, checkers and mutators describe anomalies and expected
+application behavior in terms of Linux system calls.  Addressing this
+limitation means elevating this description to a higher level and
+implementing a layer to translate this description down to the actual
+system calls a given operating system provides.
+
+An additional area for exploration is determining whether or not a given
+anomaly is able to be simulated on a given operating system.  If an anomaly
+only appears in the presence of a operating system feature only present on
+a specific operating system, it would be an error to simulate it on other
+operating systems.  Classifying anomalies in terms of where it makes sense
+to simulate them would reduce the number of false positive reports the tool
+could make.
+
+\subsection{Grouping Anomalies by Operating System}
+
+Addressing the previously mentioned limitations will provide CrashSimulator
+with an interesting new capability: the ability to simulate the experience
+of running an application on a different operating system.  This can be
+accomplished by grouping anomalies into sets representing each of the
+operating systems on which an application is expected to run. For example,
+the corpus of anomalies included with this future version of CrashSimulator
+could be segregated into groups like those present on Windows 10, those
+present on Ubuntu 18.04 and so on.  Once grouped in this fashion,
+applications could be tested against a chosen group in order to see how it
+would perform on the represented operating system without having to go
+through of the effort of deploying it there.
+
 
 \subsection{Porting new features to dependencies}
-Official implementation of required features in rr with blessing of rr folks
+
+One of the major technical hurdles to implementing CrashSimulator was our
+modification of {\tt rr} to allow the output of strace-style recordings and
+to allow process set cloning.  A future goal of this work is to provide
+these features back to the {\tt rr} project.  Doing so would benefit {\tt
+rr's} audience by allowing them acccess to these features
+and would help CrashSimulator by ensuring that functionality on which it
+depends will continue to exist as {\tt rr} continues to grow and improve.
+
 
 \section{Usability Improvements}
   Domain specific language for describing checkers and mutators
