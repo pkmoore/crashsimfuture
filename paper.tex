@@ -1,28 +1,19 @@
-p
 \documentclass[twocolumn]{article}
 
 \begin{document}
 
-All of these steps will be taken with the goal of improving the tool by
-increasing its usage.
-
-\section{Future-proofing the tool}
-
-One aspect of ensuring a tool or technique has a long and successful
-lifespan is ensuring that it uses up to date technologies and follows
-current best practices for the communities with which it is intended to
-work.
+The ultimate goal of our future work on SEA and CrashSimulator is to build
+a large, self-sustaining community of users.  To achieve this we have a
+two-part plan that focuses on both improving the tool and making specific
+community building efforts.  In this section we detail what specifically
+needs to be done to accomplish both parts of our plan.
 
 
+\section{Tool Improvements and New Features}
 
-\subsection{Updating components}
+To make CrashSimulator more appealing to our target users we propose taking
+the following actions:
 
-In the short term, two tasks to be undertaken are updating the tool to
-remove its dependence on python 2 and to support 64-bit, x86-64
-applications.
-
-64-bit support
-support new version of python
 
 \subsection{Supporting new platforms}
 
@@ -51,6 +42,7 @@ operating systems.  Classifying anomalies in terms of where it makes sense
 to simulate them would reduce the number of false positive reports the tool
 could make.
 
+
 \subsection{Grouping Anomalies by Operating System}
 
 Addressing the previously mentioned limitations will provide CrashSimulator
@@ -77,6 +69,39 @@ and would help CrashSimulator by ensuring that functionality on which it
 depends will continue to exist as {\tt rr} continues to grow and improve.
 
 
+\subsection{Updating components}
+
+While it doesn't outright stop the usage of a tool, relying on deprecated
+components does introduce friction into the process of getting it adopted
+and accepted into software distribution channels and repositories.  In
+CrashSimulator's case, there are two dependencies that need to be updated.
+The first of these is porting pieces of the code base written in Python 2
+to Python 3.  This must be done because Python 2 is no longer supported as
+of January of 2020.  While the code will continue to work, relying on an
+unsupported version of Python could cause challenges with getting the tool
+accepted by some Linux distributions and similar entities.  Additionally,
+there is concern in the Python community around writing code using an
+unsupported version -- a fact that could turn away some potential users.
+While, porting a large software project is not to be undertaken lightly,
+there have been a great deal of large software projects that have
+accomplished the move from Python 2 to 3 successfully.  As such,
+documentation and best practices for doing so are abundantly available.
+
+The second dependency that requires updating is the processor architecture
+that CrashSimulator supports.  Because the tool performs its simulation
+work manipulating the memory and register values that contain the results
+and side effects of system calls, the initial version of the tool was
+constrained to only supporting x86, 32-bit systems in order to development
+time.  At this point, 64-bit systems (typically x86\_64) are the norm and
+many Linux distributions are reducing the effort put into their 32-bit
+flavors.  While it is possible to use CrashSimulator to test applications
+by re-compiling them for 32-bit x86, this reduces two of the tool's
+advantages -- the ``universal'' nature of its tests and its ability to test
+an application without its source code.  In order to avoid a cumbersome
+situation where is users must recompile their applications, CrashSimulator
+must be improved to support applications compiled for x86\_64.
+
+
 \section{Usability Improvements}
 
 The primary developer effort associated with using CrashSimulator is in
@@ -88,8 +113,8 @@ believe the effort of actually writing a checker and mutator after the
 analysis is complete could be dramatically reduced.  Much of the complexity
 associated with constructing these elements currently comes down to their
 being implemented in fully featured python.  We believe this work could be
-reduced through the use of a simpler checker and mutator description language
-description language.  As we have discussed in more detail
+reduced through the use of a simpler checker and mutator description
+language description language.  As we have discussed in more detail
 elsewhere in this document, our plans consists of a language akin to
 regular expressions focusing on sequences of system calls and their
 arguments rather than the contents of strings.  Proof of concept
@@ -99,7 +124,7 @@ process.  As a result, we believe this approach has the potential to reduce
 both the size and complexity of the code behind CrashSimulator's checkers
 and mutators.
 
-\subsection{ Safe sandbox in which user submitted}
+\subsection{Sandboxing}
 
 As we will discuss in later sections, one of our main goals is to have a
 CrashSimulator's community contribute to the corpus of anomalies the tool
