@@ -1,4 +1,4 @@
-
+p
 \documentclass[twocolumn]{article}
 
 \begin{document}
@@ -13,7 +13,14 @@ lifespan is ensuring that it uses up to date technologies and follows
 current best practices for the communities with which it is intended to
 work.
 
+
+
 \subsection{Updating components}
+
+In the short term, two tasks to be undertaken are updating the tool to
+remove its dependence on python 2 and to support 64-bit, x86-64
+applications.
+
 64-bit support
 support new version of python
 
@@ -125,21 +132,37 @@ useful for their specific use case.
 
 \subsection{Integration into CI platforms}
 
-Given the ``universal'' nature of the testing provided by CrashSimulator
-and SEA it m
+A second thrust for fostering community expansion is setting up the
+infrastructure to allow CrashSimualtor to be integrated into existing
+continuous integration platforms.  Continuous integration platforms, such
+as TravisCI and CircleCI, are a popular solution for open source projects
+seeking to ensure their applications are continually and thoroughly tested
+as new code contributions are submitted.  Given the ``universal'' nature of
+CrashSimulator's testing process, the tool is a perfect fit for this
+scenario.  Our goal is to provide a configuration of CrashSimulator
+suitable for unattended execution to which test jobs can be submitted
+automatically as part of the continuous integration pipeline.  Once create,
+this configuration would allow for testing with CrashSimulator and a
+pre-selected set of anomalies by simply checking a box in the projects
+testing configuration.
 
-test on as many applications as possible
-an obvious spot to do this is in a continuous integration pipeline
+We believe this use case could drive rapid growth in CrashSimulator's
+community because it removes most of the friction associated with adopting
+a new tool.  Once the ``automated'' version of the tool is adopted it is a
+natural next step for users to move into more advanced use cases and,
+ideally, contribution to the tool as their needs expand.  Further, by
+integrating with exsting continuous integration infrastructure,
+CrashSimulator gains access to those platforms' communities resulting in
+exposure to users who might not have otherwise come into contact with the
+tool.  The end result of all this is a new, expanded, set of community
+members that can contribute to the tool and improve its efficacy for
+everyone.
 
-As simple as adding a phase to new or existing continuous integration
-pipelines...
-Work with existing test environment providers to make the tool more
-available to their users...
-
-  Product evangelism
-  User study
-  Wider instruction on selecting and capturing anomalies
-  CI platform support
 \subsection{Documentation on identifying and capturing anomalies}
 
 \end{document}
+
+
+%  Product evangelism
+%  User study
+%  Wider instruction on selecting and capturing anomalies
