@@ -1,5 +1,5 @@
 
-\documentclass{article}
+\documentclass[twocolumn]{article}
 
 \begin{document}
 
@@ -7,6 +7,11 @@ All of these steps will be taken with the goal of improving the tool by
 increasing its usage.
 
 \section{Future-proofing the tool}
+
+One aspect of ensuring a tool or technique has a long and successful
+lifespan is ensuring that it uses up to date technologies and follows
+current best practices for the communities with which it is intended to
+work.
 
 \subsection{Updating components}
 64-bit support
@@ -67,12 +72,74 @@ depends will continue to exist as {\tt rr} continues to grow and improve.
 
 \section{Usability Improvements}
   Domain specific language for describing checkers and mutators
+  Safe sandbox in which user submitted
 
 
 \section{Community building}
+
+The community that grows around a tool or technique is likely an even
+bigger contributor to its long term success than its technical merits.
+This is especially true in the case of SEA and CrashSimulator due to the
+way the tool and technique become more effective as users contribute to the
+corpus of anomalies that can be simulated.  As a result, developing a
+vibrant community is a paramount future goal of this work.
+
+The technical side of this goal has two parts.  The first is to establish
+an online repository into which users can submit checkers and mutators they
+have written so that others may download and take advantage of them.  The
+second part is to set up the infrastructure required to allow
+CrashSimulator to be integrated into continuous integration and automated
+testing products in use by major open source applications.  Each of these
+parts will ease the process of adopting CrashSimulator and increase the
+audience to which the tool has been introduced.
+
+\subsection{Establishing an Anomaly Repository}
+
+One of the primary advantages offered by SEA and CrashSimulator is the way
+their effectiveness and capabilities can be augmented by the addition of
+new anomalies.  To best take advantage of this fact it makes sense to
+provide to users as many anomalies as is feasible in an easily accessible
+fashion.  In the simplest case, this involves supplying a set of
+straightforward anomalies that are known to be useful in testing a wide
+variety of applications directly with the tool when it is installed.
+However, as the number of anomalies being contributed grows, this approach
+will not scale.  Shipping a large number of anomalies, including some of
+which will likely be useful only in specific situations, will harm the
+tool's performance and user experience.  To address this problem, we
+propose establishing an online anomaly repository.  This approach would
+allow us to  store and provide as many anomalies as possible while avoiding
+the aforementioned problems.
+
+In addition to avoiding performance and user experience problems, an online
+anomaly repository can act as a centralized location for anomaly metadata
+that can dramatically improve their usefulness. For example, such a
+repository would provide a location where anomalies could be tagged and
+categorized along dimensions like the operating systems they can appear
+involve, their performance characteristics, and the sorts of applications
+with which they are likely to be useful.  Additionally, it would also
+provide a centralized location for community driven anomaly documentation
+and discussion.  This information would allow users to be informed enough
+to download the individual anomalies or sets of anomalies that are most
+useful for their specific use case.
+
+
+\subsection{Integration into CI platforms}
+
+Given the ``universal'' nature of the testing provided by CrashSimulator
+and SEA it m
+
+test on as many applications as possible
+an obvious spot to do this is in a continuous integration pipeline
+
+As simple as adding a phase to new or existing continuous integration
+pipelines...
+Work with existing test environment providers to make the tool more
+available to their users...
+
   Product evangelism
   User study
   Wider instruction on selecting and capturing anomalies
   CI platform support
+\subsection{Documentation on identifying and capturing anomalies}
 
 \end{document}
