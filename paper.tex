@@ -219,15 +219,18 @@ tool.  The end result of all this is a new, expanded, set of community
 members that can contribute to the tool and improve its efficacy for
 everyone.
 
-%\subsection{Giving New Features Back to the Community}
-%
-%One of the major technical hurdles to implementing CrashSimulator was our
-%modification of {\tt rr} to allow the output of strace-style recordings and
-%to allow process set cloning.  A future goal of this work is to provide
-%these features back to the {\tt rr} project.  Doing so would benefit {\tt
-%rr's} audience by allowing them acccess to these features
-%and would help CrashSimulator by ensuring that functionality on which it
-%depends will continue to exist as {\tt rr} continues to grow and improve.
+
+\subsection{Giving New Features Back to the Community}
+
+Part of the effort of developing CrashSimulator was making modifications to
+the {\tt rr} record-and-replay debugger.  Specifically, these changes
+allowed for two new features: the output of strace-style recordings and the
+ability to clone process sets as discussed in the SEA paper.  We propose
+giving these features back to the {\tt rr} community by porting them
+into main-line {\tt rr}.  Doing so would benefit {\tt rr's
+users by allowing them access to these new capabilities and would help
+CrashSimulator by ensuring that functionality on which it depends will
+continue to exist as {\tt rr} continues to grow and improve.
 
 
 \end{document}
